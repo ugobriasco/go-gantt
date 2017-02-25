@@ -17,6 +17,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ChartComponent } from './chart/chart.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { GoogleChartDirective } from './chart/google-chart.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     LandingComponent,
     ChartComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    GoogleChartDirective
   ],
   imports: [
     BrowserModule,

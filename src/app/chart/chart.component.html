@@ -1,3 +1,14 @@
-<p>
-  chart works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Tasks</h2>
+
+			<p>{{data[0][0]}}</p>
+		</div>
+		<div class="col-md-8">
+			<h2>Graph</h2>
+			<div id="chart" [chartData]="data" [chartOptions] = "options" chartType="Gantt" GoogleChart></div>
+
+		</div>
+	</div>
+</div>
