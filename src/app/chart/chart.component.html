@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Tasks</h2>
+
+			<div class="well">
+				<form (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text" class="form-control" id="name" [(ngModel)] = "task.name" name="name">
+					</div>
+					<div class="form-group">
+						<label>Start</label>
+						<input type="date" class="form-control" id="start" [(ngModel)] = "task.start" name="start">
+					</div>
+					<div class="form-group">
+						<label>End</label>
+						<input type="date" class="form-control" id="end" [(ngModel)] = "task.end" name="end">
+					</div>
+					<div class="form-group">
+						<label>Duration</label>
+						<input type="number" class="form-control" id="duration" [(ngModel)] = "task.duration" name="duration">
+					</div>
+					<div class="form-group">
+						<label>Completion</label>
+						<input type="number" class="form-control" id="completion" [(ngModel)] = "task.completion" name="completion">
+					</div>
+					<div class="form-group">
+						<label>Dependancy</label>
+						<input type="text" class="form-control" id="dependancy" [(ngModel)] = "task.dependancy" name="dependancy">
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+			{{task | json}}
+
+			
+		</div>
+		<div class="col-md-8">
+			<section>
+				<h2>Graph</h2>
+				<div id="chart" [chartData]="data" [chartOptions] = "options" chartType="Gantt" GoogleChart></div>
+			</section>
+			<section>
+				<h2>Table</h2>
+				
+			</section>
+
+		</div>
+	</div>
+</div>
