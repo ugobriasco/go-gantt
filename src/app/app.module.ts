@@ -19,6 +19,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { GoogleChartDirective } from './chart/google-chart.directive';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { GoogleChartDirective } from './chart/google-chart.directive';
     ChartComponent,
     FooterComponent,
     NavbarComponent,
-    GoogleChartDirective
+    GoogleChartDirective,
   ],
   imports: [
     BrowserModule,
