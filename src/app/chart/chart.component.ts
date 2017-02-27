@@ -46,7 +46,7 @@ counter = 2;
     this.counter = this.counter+1;
     this.task.id = this.counter;
   	this.chart.dataTable.push(this.TasktoArray(this.task));
-    this.chart.options.forceRedrawNow=true;
+    
     
 
   	console.log(this.chart.dataTable);
