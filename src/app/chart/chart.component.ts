@@ -10,36 +10,46 @@ import { Task } from './task.model';
 export class ChartComponent implements OnInit {
 
 
-public data = [
+chart = {
+  chartType: 'Gantt',
+  dataTable: [
 ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'],
 ['1', 'Phase 1', new Date(2016,0,1), new Date(2016,0,2), 200, 100, null],
-['2', 'Phase 2', new Date(2016,0,2), new Date(2016,0,3), null, 20, '1']
+['2', 'Phase 2', new Date(2016,0,2), new Date(2016,0,3), null, 20, '1'],
 
-];
 
-public options = {
-	title: 'Project',
-	height: 275,
-
+],
+  options:{
+    title: 'Project',
+    height: 275,
+  }
 }
 
 task = new Task();
+
+counter = 2;
 
 
 
   constructor() { }
 
   ngOnInit() {
-  	console.log(this.data);
-  	this.task.id = this.data[this.data.length-1].id
+  	console.log(this.chart.dataTable);
+  	//this.task.id = this.chart.dataTable[this.chart.dataTable.length-1].id
   }
 
 
   //submit
   onSubmit(){
-  	task.start = new Date(task.start);
-  	this.data.push(this.TasktoArray(this.task));
-  	console.log(this.data);
+  	this.task.start = new Date(this.task.start);
+    this.task.end = new Date(this.task.end);
+    this.counter = this.counter+1;
+    this.task.id = this.counter;
+  	this.chart.dataTable.push(this.TasktoArray(this.task));
+    
+    
+
+  	console.log(this.chart.dataTable);
 
   }
 
@@ -49,12 +59,12 @@ task = new Task();
 
   //convert json to array
 
-  TasktoArray(task: Task){
+  TasktoArray($task: Task){
 
   	let result = [];
 
-  	for(var key in task){
-  		result.push(task[key])
+  	for(var key in $task){
+  		result.push($task[key])
   	}
 
   	// conversione in date

@@ -40,10 +40,16 @@
 		<div class="col-md-8">
 			<section>
 				<h2>Graph</h2>
-				<div id="chart" [chartData]="data" [chartOptions] = "options" chartType="Gantt" GoogleChart></div>
+				<google-chart [data]="chart"></google-chart>
 			</section>
+
 			<section>
 				<h2>Table</h2>
+				<table class="table">
+					<tr *ngFor="let row of chart.dataTable">
+						<td *ngFor="let value of row">{{value}}</td>
+					</tr>
+				</table>
 				
 			</section>
 

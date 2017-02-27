@@ -4,11 +4,15 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tv,
 		playerDefaults = {autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3};
+
+https://www.youtube.com/watch?v=lkXFBPGZpTM
+
+
 var vid = [
-			{'videoId': '2b5QNj-BVhs', 'startSeconds': 515, 'endSeconds': 690, 'suggestedQuality': 'hd720'},
-			{'videoId': '9ge5PzHSS0Y', 'startSeconds': 465, 'endSeconds': 657, 'suggestedQuality': 'hd720'},
-			{'videoId': 'OWsCt7B-KWs', 'startSeconds': 0, 'endSeconds': 240, 'suggestedQuality': 'hd720'},
-			{'videoId': 'qMR-mPlyduE', 'startSeconds': 19, 'endSeconds': 241, 'suggestedQuality': 'hd720'}
+			{'videoId': 'lkXFBPGZpTM', 'startSeconds': 5, 'endSeconds': 100, 'suggestedQuality': 'hd720'},
+			{'videoId': 'lkXFBPGZpTM', 'startSeconds': 465, 'endSeconds': 657, 'suggestedQuality': 'hd720'},
+			{'videoId': 'lkXFBPGZpTM', 'startSeconds': 0, 'endSeconds': 240, 'suggestedQuality': 'hd720'},
+			{'videoId': 'lkXFBPGZpTM', 'startSeconds': 19, 'endSeconds': 241, 'suggestedQuality': 'hd720'}
 		],
 		randomVid = Math.floor(Math.random() * vid.length),
     currVid = randomVid;
