@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -33,7 +35,8 @@ import { GoogleChartDirective } from './chart/google-chart.directive';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    Ng2GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
