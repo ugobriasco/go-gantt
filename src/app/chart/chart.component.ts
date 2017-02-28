@@ -14,7 +14,8 @@ chart = {
   chartType: 'Gantt',
   dataTable: [
 ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'],
-
+['1', 'Task 1', new Date(2016,12,6), new Date(2016,12,20), 200, 100, null],
+['2', 'Task 2', new Date(2016,12,20), new Date(2017,2,15), null, 20, '1'],
 
 
 ],
