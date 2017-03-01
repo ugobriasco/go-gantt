@@ -2,3 +2,8 @@ html, body {
   height: 100%;
   
 }
+
+/*Typography*/
+h1, h2, h3,p,blockquote,pre {
+	font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+}
