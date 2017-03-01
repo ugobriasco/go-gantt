@@ -70,7 +70,7 @@ counter = this.chart.dataTable.length-1;
   	return result;
   }
 
-  stringToDate(str: string){
+  stringToDate(str: any){
     let parts = str.split('-');
     return new Date(parts[2],parts[0]-1,parts[1]);
   }
