@@ -10,7 +10,7 @@ import { ChartComponent } from './chart/chart.component';
 export const routes: Routes = [
 {
 	path: '', 
-	redirectTo: '/landing', 
+	redirectTo: 'landing', 
 	pathMatch: 'full'
 },
 {
