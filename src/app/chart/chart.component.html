@@ -43,15 +43,50 @@
 				<google-chart [data]="chart"></google-chart>
 			</section>
 
+
+			<section>
+				<h1>Table</h1>
+				<table class="table" *ngIf="project">
+					<tr>
+					    <th></th>
+					    <th>ID</th> 
+					    <th>Name</th>
+					    <th>Start</th>
+					    <th>End</th>
+					    <th>Duration</th>
+					    <th>Completion</th>
+					    <th>Dependancy</th>
+					  </tr>
+
+					<tr *ngFor="let task of project">
+						<td>
+							<div><a class="fa fa-trash-o text-danger" (ngClick) = "console.log('task.id')"></a></div>
+							<div><a class="fa fa-pencil text-primary"></a></div>
+						</td>
+						<td>{{task.id}}</td>
+						<td>{{task.name}}</td>
+						<td>{{task.start}}</td>
+						<td>{{task.end}}</td>
+						<td>{{task.duration}}</td>
+						<td>{{task.completion}}</td>
+						<td>{{task.dependancy}}</td>
+					</tr>
+				</table>
+			</section>
+
 			<section>
 				<h2>Table</h2>
 				<table class="table">
 					<tr *ngFor="let row of chart.dataTable">
+						<td>
+							<div><a (ngClick) = "deleteTask(chart.dataTable, row)"><i class="fa fa-trash-o"></i></a></div>
+						</td>
 						<td *ngFor="let value of row">{{value}}</td>
 					</tr>
 				</table>
 				
 			</section>
+
 
 		</div>
 	</div>
