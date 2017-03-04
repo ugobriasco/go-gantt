@@ -43,6 +43,7 @@ project = [];
 
   //submit
   onSubmit(){
+    this.validateInput(this.task);
     this.project = this.addTask(this.project, this.task);
     this.task = new Task();
     this.draw();
@@ -52,13 +53,36 @@ project = [];
     this.project.splice(this.project.indexOf(task), 1);
     this.draw()
   }
-
   addTask(project, task: Task){
     task.id = this.counter.toString();
     this.counter++;
     project.push(task);
     return project;
   }
+
+
+  validateInput(task: Task){
+    //duration is set if end date exists
+    if(!task.duration && task.end) {
+      let d1 = new Date(task.start).getTime();
+      let d2 = new Date(task.end).getTime();
+      return  task.duration = (d2-d1)/(1000*3600*24);
+    }
+    //the duration sets the new end date
+    if(task.duration){
+      //todo
+
+    }
+
+    
+    
+
+
+  }
+
+
+
+
 
   //convert json to array
   TaskToArray($task: Task){
