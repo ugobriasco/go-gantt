@@ -38,13 +38,10 @@
 			
 		</div>
 		<div class="col-md-8">
-			<section>
-				<h2>Chart</h2>
-				<google-chart [data]="chart"></google-chart>
-			</section>
+			
 
 
-			<section>
+			<section id="tasks">
 				<h1>Table</h1>
 				<table class="table" *ngIf="project">
 					<tr>
@@ -56,12 +53,11 @@
 					    <th>Duration</th>
 					    <th>Completion</th>
 					    <th>Dependancy</th>
-					  </tr>
+					</tr>
 
 					<tr *ngFor="let task of project">
 						<td>
-							<div><a class="fa fa-trash-o text-danger" (ngClick) = "console.log('task.id')"></a></div>
-							<div><a class="fa fa-pencil text-primary"></a></div>
+							<button (click) = "deleteTask(project, task)"> delete</button>
 						</td>
 						<td>{{task.id}}</td>
 						<td>{{task.name}}</td>
@@ -74,17 +70,18 @@
 				</table>
 			</section>
 
-			<section>
+			<section id="chartMirror">
 				<h2>Table</h2>
 				<table class="table">
 					<tr *ngFor="let row of chart.dataTable">
-						<td>
-							<div><a (ngClick) = "deleteTask(chart.dataTable, row)"><i class="fa fa-trash-o"></i></a></div>
-						</td>
 						<td *ngFor="let value of row">{{value}}</td>
 					</tr>
-				</table>
-				
+				</table>	
+			</section>
+
+			<section id="chart">
+				<h2>Chart</h2>
+				<google-chart [data]="chart"></google-chart>
 			</section>
 
 

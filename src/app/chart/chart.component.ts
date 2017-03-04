@@ -17,7 +17,6 @@ chart = {
 ['1', 'Task 1', new Date(2016,12,6), new Date(2016,12,20), 200, 100, null],
 ['2', 'Task 2', new Date(2016,12,20), new Date(2017,2,15), null, 20, '1'],
 
-
 ],
   options:{
     title: 'Project',
@@ -28,6 +27,7 @@ chart = {
 task = new Task();
 counter= 0;
 
+chartHeaders = ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'];
 project = [];
 
 
@@ -37,38 +37,35 @@ project = [];
 
   ngOnInit() {
   	console.log(this.counter);
-    this.counter = this.project.length-1;
+    this.counter = 0
 
   }
 
   //submit
   onSubmit(){
-    this.counter = this.counter+1;
-    this.task.id = this.counter.toString();    
-    this.project.push(this.task);
+    this.project = this.addTask(this.project, this.task);
     this.task = new Task();
-  }
+    this.draw(this.project);
 
-  deleteTask(project, id){
-    for(var i = 0; i < project.length; i++) {
-    if(project[i].id == id) {
-        project.splice(i, 1);
-        break;
-    }
-}
   }
 
 
+  //operations to project
 
-
-  //select
-  draw(project){
-    this.task.start = new Date(this.stringToDate(this.task.start));
-    this.task.end = new Date(this.stringToDate(this.task.end));
-    
-    
-    this.chart = Object.create(this.chart);
+  deleteTask(project, task){
+    project.splice(project.indexOf(task), 1);
+    return project;
   }
+
+  addTask(project, task: Task){
+    task.id = this.counter.toString();
+    this.counter++;
+    project.push(task);
+    return project;
+  }
+
+
+
 
 
   //convert json to array
@@ -84,11 +81,45 @@ project = [];
 
   	return result;
   }
-
+  //convert date to compliant
   stringToDate(str: any){
     let parts = str.split('-');
     return new Date(parts[0],parts[1]-1,parts[2]);
   }
+  //convert json in 2darr
+  convertJSONto2D(json) {
+    let arr = [];
+    let result  = [];
+
+    arr.push(Object.keys(json));
+
+    for(let key in json) {
+        if (json.hasOwnProperty(key)) {
+            result.push(json[key].length);
+        }
+    }
+
+    arr.push(result);
+
+    return arr;
+  }
+
+  //draw chart
+  draw(project){
+
+    this.chart.dataTable = [
+      ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'],
+      ['1', 'Task 1', new Date(2016,12,6), new Date(2016,12,20), 200, 100, null]
+    ]
+
+
+    //this.task.start = new Date(this.stringToDate(this.task.start));
+    //this.task.end = new Date(this.stringToDate(this.task.end));
+    
+    
+    this.chart = Object.create(this.chart);
+  }
+
 
 
 
