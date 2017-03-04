@@ -27,7 +27,7 @@ chart = {
 task = new Task();
 counter= 0;
 
-chartHeaders = ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'];
+//chartHeaders = ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'];
 project = [];
 
 
@@ -45,16 +45,12 @@ project = [];
   onSubmit(){
     this.project = this.addTask(this.project, this.task);
     this.task = new Task();
-    this.draw(this.project);
-
+    this.draw();
   }
-
-
   //operations to project
-
-  deleteTask(project, task){
-    project.splice(project.indexOf(task), 1);
-    return project;
+  deleteTask(task){
+    this.project.splice(this.project.indexOf(task), 1);
+    this.draw()
   }
 
   addTask(project, task: Task){
@@ -63,10 +59,6 @@ project = [];
     project.push(task);
     return project;
   }
-
-
-
-
 
   //convert json to array
   TaskToArray($task: Task){
@@ -86,37 +78,27 @@ project = [];
     let parts = str.split('-');
     return new Date(parts[0],parts[1]-1,parts[2]);
   }
-  //convert json in 2darr
-  convertJSONto2D(json) {
-    let arr = [];
-    let result  = [];
-
-    arr.push(Object.keys(json));
-
-    for(let key in json) {
-        if (json.hasOwnProperty(key)) {
-            result.push(json[key].length);
-        }
+  daysToMilliseconds(days) {
+      return days * 24 * 60 * 60 * 1000;
     }
-
-    arr.push(result);
-
-    return arr;
-  }
-
   //draw chart
-  draw(project){
-
+  draw(){
     this.chart.dataTable = [
       ['Task ID', 'Task Name', 'Start Date', 'End Date', 'Duration', 'Percent Complete', 'Deependencies'],
-      ['1', 'Task 1', new Date(2016,12,6), new Date(2016,12,20), 200, 100, null]
+      
     ]
-
-
-    //this.task.start = new Date(this.stringToDate(this.task.start));
-    //this.task.end = new Date(this.stringToDate(this.task.end));
-    
-    
+    for(let i = 0; i < this.project.length; i++){
+      this.chart.dataTable.push([
+        this.project[i].id,
+        this.project[i].name,
+        this.stringToDate(this.project[i].start),
+        this.stringToDate(this.project[i].end),
+        this.daysToMilliseconds(this.project[i]),
+        this.project[i].completion,
+        this.project[i].dependancy
+        ]);
+      
+    }
     this.chart = Object.create(this.chart);
   }
 

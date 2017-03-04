@@ -57,7 +57,7 @@
 
 					<tr *ngFor="let task of project">
 						<td>
-							<button (click) = "deleteTask(project, task)"> delete</button>
+							<button (click) = "deleteTask(task)"> delete</button>
 						</td>
 						<td>{{task.id}}</td>
 						<td>{{task.name}}</td>
@@ -69,6 +69,8 @@
 					</tr>
 				</table>
 			</section>
+
+			<button (click) = "draw()">draw</button>
 
 			<section id="chartMirror">
 				<h2>Table</h2>
