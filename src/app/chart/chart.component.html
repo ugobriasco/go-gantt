@@ -29,7 +29,11 @@
 					</div>
 					<div class="form-group">
 						<label>Completion</label>
-						<input type="number" class="form-control" id="completion" [(ngModel)] = "task.completion" name="completion">
+						<div class="input-group">
+							<input type="number" class="form-control" id="completion" [(ngModel)] = "task.completion" name="completion">
+							<span class="input-group-addon">%</span>
+						</div>
+						
 					</div>
 					<div class="form-group">
 						<label>Dependancy</label>

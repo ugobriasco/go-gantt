@@ -82,6 +82,15 @@ body, html {
   opacity: 1;
 }
 
+.jumbotron{
+  background-color: rgba(244, 244, 244, 0.5) ;
+  border-color: rgba(244, 244, 244, 0)
+}
+
+.jumbotron h1{
+  color: #CD210E;
+}
+
 
 video {
   object-fit: cover;
