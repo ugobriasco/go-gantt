@@ -62,6 +62,14 @@ project = [];
 
 
   validateInput(task: Task){
+
+    let start = new Date(task.start);
+
+    if(!task.end){
+      //todo
+
+    } else {
+
     //duration is set if end date exists
     if(!task.duration && task.end) {
       let d1 = new Date(task.start).getTime();
@@ -73,6 +81,20 @@ project = [];
       //todo
 
     }
+    if(task.start > task.end){
+
+    }
+
+
+
+
+    }
+
+
+
+
+
+    
 
     
     
