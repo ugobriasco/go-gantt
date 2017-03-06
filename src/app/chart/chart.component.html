@@ -30,21 +30,18 @@
 					<div class="form-group">
 						<label>Completion</label>
 						<div class="input-group">
-							<input type="number" class="form-control" id="completion" [(ngModel)] = "task.completion" name="completion" value="0">
+							<input type="number" class="form-control" id="completion" [(ngModel)] = "task.completion" name="completion">
 							<span class="input-group-addon">%</span>				
 						</div>
 						
 					</div>
-					<div class="form-group" *ngIf="project.lenght >0">
+					<div class="form-group" *ngIf="project[0]">
 						<label>Dependancy</label>
-						<input type="text" class="form-control" id="dependancy" [(ngModel)] = "task.dependancy" name="dependancy">
+						<input type="text" class="form-control" id="dependancy" [(ngModel)] = "task.dependancy" name="dependancy" placeholder="Select the ID of the predecessor task">
 						<select class="input-group-btn" *ngFor="let task of project">
 							<option>{{task.id}}</option>
 						</select>
 					</div>
-
-					div class=""
-
 
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
@@ -76,8 +73,8 @@
 						<td>{{task.name}}</td>
 						<td>{{task.start}}</td>
 						<td>{{task.end}}</td>
-						<td>{{task.duration}}</td>
-						<td>{{task.completion}}</td>
+						<td>{{task.duration}} Days</td>
+						<td>{{task.completion}} %</td>
 						<td>{{task.dependancy}}</td>
 					</tr>
 				</table>
