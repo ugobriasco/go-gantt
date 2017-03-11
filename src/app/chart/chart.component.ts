@@ -54,7 +54,8 @@ project = [];
 
   ngOnInit() {
   	console.log(this.counter);
-    this.counter = 0
+    this.counter = 0;
+
 
   }
 
@@ -80,12 +81,25 @@ project = [];
 
   validateInput(task: Task){
 
-    let start = new Date(task.start);
+    //if(task.start)  task.start = this.stringToDate(task.start);
+    //if(task.end) task.end = this.stringToDate(task.end);
+
+  
+    //if input does not contain end date
 
     if(!task.end){
       //if the input does not contain end date
       if(task.duration){
-        task.end = this.addDays(task.start,task.duration);   
+
+        let d1 = new Date(task.start);
+        let d2 = new Date();
+
+        d2.setDate(d1.getDate() + task.duration);
+        return task.end = d2.getFullYear()+'-'+(d2.getMonth()+1)+'-'+d2.getDate();
+
+
+
+   
       } else {
         task.end = task.start;
         task.duration = 1;
@@ -111,25 +125,6 @@ project = [];
     }
    
   }
-
-
-
-
-
-    
-
-    
-    
-
-
-addDays(date, days) {
-    var result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-}
-
-
-
 
 
   //convert json to array
@@ -164,7 +159,9 @@ addDays(date, days) {
         this.project[i].id,
         this.project[i].name,
         this.stringToDate(this.project[i].start),
+        //this.project[i].start,
         this.stringToDate(this.project[i].end),
+        //this.project[i].end,
         this.daysToMilliseconds(this.project[i]),
         this.project[i].completion,
         this.project[i].dependancy

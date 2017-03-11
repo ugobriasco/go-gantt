@@ -17,11 +17,11 @@
 						<label>End</label>
 						<input type="date" class="form-control" id="end" [(ngModel)] = "task.end" name="end">
 					</div>
-					<div class="form-group">
+					<div class="form-group" *ngIf="!task.end">
 
 						<label>Duration</label>
 						<div class="input-group">
-							<input type="number" class="form-control" id="duration" [(ngModel)] = "task.duration" name="duration">
+							<input type="number" class="form-control" id="duration" [(ngModel)] = "task.duration" name="duration" defaul>
 							<span class="input-group-addon">Days</span>
 							
 						</div>
@@ -42,6 +42,7 @@
 						<input type="text" class="form-control" id="dependancy" [(ngModel)] = "task.dependancy" name="dependancy" placeholder="e.g. 0,1,2">
 						<p>Select the IDs of the predecessor tasks</p>
 					</div>
+
 
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
@@ -88,10 +89,8 @@
 					<p><strong><i class="fa fa-info-circle fa-fw fa-2x"></i>Fill some tasks</strong> and draw a wonderful <strong>gantt chart</strong> like the one below</p>
 					
 				</div>
-				<google-chart [data]="chart"></google-chart>
+				<google-chart [data]="chart"></google-chart>	
 			</section>
-
-
 		</div>
 	</div>
 </div>
