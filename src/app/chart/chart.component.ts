@@ -83,41 +83,50 @@ project = [];
     let start = new Date(task.start);
 
     if(!task.end){
-      //todo
+      //if the input does not contain end date
+      if(task.duration){
+        task.end = this.addDays(task.start,task.duration);   
+      } else {
+        task.end = task.start;
+        task.duration = 1;
+
+      }
+
 
     } else {
 
-    //duration is set if end date exists
-    if(!task.duration && task.end) {
+      //if input contains end date
+
+      if(task.start > task.end){
+      let tmp = task.start;
+      task.start = task.end;
+      task.end = tmp;
+      return task;
+      } 
+
       let d1 = new Date(task.start).getTime();
       let d2 = new Date(task.end).getTime();
-      return  task.duration = (d2-d1)/(1000*3600*24);
+      return  task.duration = (d2-d1)/(1000*3600*24); 
+   
     }
-    //the duration sets the new end date
-    if(task.duration){
-      //todo
-
-    }
-    if(task.start > task.end){
-
-    }
-
-
-
-
-    }
-
-
-
-
-
-    
-
-    
-    
-
-
+   
   }
+
+
+
+
+
+    
+
+    
+    
+
+
+addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
 
 
 
